@@ -9,6 +9,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           submodules: 'recursive'
 
       - name: Setup Java
