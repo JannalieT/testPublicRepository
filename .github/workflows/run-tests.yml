@@ -1,0 +1,25 @@
+name: run-tests
+
+on: [pull_request]
+jobs:
+  Run-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout your repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Clean compile
+        run: mvn -f pom.xml clean compile
+
+      - name: Execute tests
+        run: mvn test
