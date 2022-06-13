@@ -49,6 +49,8 @@ public class SumTest
     {
         File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample.nv");
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        System.out.println("PINEAPPLE");
+        System.out.println(testFile);
         if (testFilesMissing(testFile)) {
             return;
         }
