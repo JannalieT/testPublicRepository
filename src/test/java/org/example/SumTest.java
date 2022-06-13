@@ -43,7 +43,6 @@ public class SumTest
         }
     }
 
-
     @Test
     public void shouldSumDataExampleFile()
     {
@@ -56,7 +55,7 @@ public class SumTest
         }
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
-        assertEquals(-5201, sum.sumNumbers(nums));
+        assertEquals(-12218, sum.sumNumbers(nums));
         System.out.println("PINEAPPLE");
     }
 

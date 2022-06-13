@@ -1,3 +1,4 @@
 [submodule "testPrivateRepository"]
 	path = testPrivateRepository
 	url = git@github.com:JannalieT/testPrivateRepository.git
+	branch = main
