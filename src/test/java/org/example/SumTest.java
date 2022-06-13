@@ -65,7 +65,7 @@ public class SumTest
     {
         File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample2.nv");
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        System.out.println("PINEAPPLE");
+        System.out.println("ORANGE");
         System.out.println(testFile);
         if (testFilesMissing(testFile)) {
             return;
@@ -73,7 +73,7 @@ public class SumTest
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
         assertEquals(21899, sum.sumNumbers(nums));
-        System.out.println("PINEAPPLE");
+        System.out.println("ORANGE");
     }
 
 
@@ -82,7 +82,7 @@ public class SumTest
     {
         File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample3.nv");
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        System.out.println("PINEAPPLE");
+        System.out.println("GRAPE");
         System.out.println(testFile);
         if (testFilesMissing(testFile)) {
             return;
@@ -90,6 +90,6 @@ public class SumTest
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
         assertEquals(-32643, sum.sumNumbers(nums));
-        System.out.println("PINEAPPLE");
+        System.out.println("GRAPE");
     }
 }
