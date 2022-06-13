@@ -88,7 +88,7 @@ public class SumTest
         }
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
-        assertEquals(21899, sum.sumNumbers(nums));
+        assertEquals(-32643, sum.sumNumbers(nums));
         System.out.println("PINEAPPLE");
     }
 }
