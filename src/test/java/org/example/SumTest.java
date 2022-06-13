@@ -75,4 +75,20 @@ public class SumTest
         assertEquals(21899, sum.sumNumbers(nums));
         System.out.println("PINEAPPLE");
     }
+
+    @Test
+    public void shouldSumDataExampleFile3()
+    {
+        File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample3.nv");
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        System.out.println("PINEAPPLE");
+        System.out.println(testFile);
+        if (testFilesMissing(testFile)) {
+            return;
+        }
+        short[] nums = readNumsFromFile(testFile);
+        Sum sum = new Sum();
+        assertEquals(21899, sum.sumNumbers(nums));
+        System.out.println("PINEAPPLE");
+    }
 }
