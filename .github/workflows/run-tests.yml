@@ -1,6 +1,9 @@
 name: run-tests
 
 on: [pull_request]
+
+env:
+  BUILD_ENV: true
 jobs:
   Run-Tests:
     runs-on: ubuntu-latest
