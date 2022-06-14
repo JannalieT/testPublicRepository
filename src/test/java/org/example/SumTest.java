@@ -4,12 +4,10 @@ import static java.lang.Boolean.parseBoolean;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Assume;
 import org.junit.Test;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,9 +32,13 @@ public class SumTest
         return numArr;
     }
 
-    boolean testFilesMissing(File testFile) {
+    boolean testFilesMissing(File testFile) throws FileNotFoundException {
         if (!testFile.exists()) {
-            System.out.println("File " + testFile + " doesn't exist, skipping test");
+            boolean isBuildEnv = Boolean.parseBoolean(System.getenv("BUILD_ENV"));;
+            String msg = "File " + testFile + " doesn't exist";
+            if (isBuildEnv) {
+                throw new FileNotFoundException(msg);
+            }
             return true;
         } else {
             return false;
@@ -44,38 +46,27 @@ public class SumTest
     }
 
     @Test
-    public void shouldSumDataExampleFile()
-    {
-        System.out.println("PINEAPPLE");
-        System.out.println(System.getenv("BUILD_ENV"));
+    public void shouldSumDataExampleFile() throws FileNotFoundException {
         File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample.nv");
-        if (testFilesMissing(testFile)) {
-            return;
-        }
+        Assume.assumeFalse(testFile + " doesn't exist", testFilesMissing(testFile));
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
         assertEquals(-12218, sum.sumNumbers(nums));
     }
 
     @Test
-    public void shouldSumDataExampleFile2()
-    {
+    public void shouldSumDataExampleFile2() throws FileNotFoundException {
         File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample2.nv");
-        if (testFilesMissing(testFile)) {
-            return;
-        }
+        Assume.assumeFalse(testFile + " doesn't exist", testFilesMissing(testFile));
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
         assertEquals(21899, sum.sumNumbers(nums));
     }
 
     @Test
-    public void shouldSumDataExampleFile3()
-    {
-        File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/datafileexample3.nv");
-        if (testFilesMissing(testFile)) {
-            return;
-        }
+    public void shouldSumDataExampleFile3() throws FileNotFoundException {
+        File testFile = new File(System.getProperty("user.dir") + "/testPrivateRepository/data/nonexistentfile.nv");
+        Assume.assumeFalse(testFile + " doesn't exist", testFilesMissing(testFile));
         short[] nums = readNumsFromFile(testFile);
         Sum sum = new Sum();
         assertEquals(-32643, sum.sumNumbers(nums));
