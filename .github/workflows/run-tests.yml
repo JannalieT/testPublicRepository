@@ -9,7 +9,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PRIVATE_ACCESS_TOKEN }}
+          ssh-key: ${{ secrets.SSH_KEY_SUBMODULE }}
           lfs: 'true'
           submodules: 'recursive'
 
